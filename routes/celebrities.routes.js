@@ -8,7 +8,7 @@ router.get("/create", (req, res, next) => {
   res.render("celebrities/new-celebrity.hbs");
 });
 
-router.post("/create", (req, res, next) => {
+router.post("celebrities/create", (req, res, next) => {
   const { name, occupation, catchPhrase } = req.body;
 
   const newCelebrity = new Celebrity({
@@ -24,6 +24,30 @@ router.post("/create", (req, res, next) => {
     })
     .catch((err) => {
       res.render("celebrities/new-celebrity");
+    });
+});
+
+// // 1) doesn't work
+// router.get("/celebrities", async (req, res, next) => {
+//   try {
+//     let celebrities = await Celebrity.find();
+//     console.log(celebrities);
+//     res.render("celebrities/celebrities", { celebrities });
+//   } catch (error) {
+//     console.log(error);
+//     next(error);
+//   }
+// });
+
+// // 2) also doesn't work
+router.get("/celebrities", (req, res, next) => {
+  Celebrity.find()
+    .then((celebrities) => {
+      res.render("celebrities/celebrities", { celebrities });
+    })
+    .catch((err) => {
+      console.log("Error retrieving celebrities from database.", err);
+      res.render("error");
     });
 });
 
