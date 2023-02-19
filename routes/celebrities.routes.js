@@ -8,62 +8,41 @@ router.get("/create", (req, res, next) => {
   res.render("celebrities/new-celebrity");
 });
 
-router.post("/create", (req, res, next) => {
+router.get("/celebrities", async (req, res, next) => {
+  try {
+    let celebrities = await Celebrity.find();
+    console.log(celebrities);
+    res.render("celebrities/celebrities", { celebrities });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.post("/celebrities/create", (req, res, next) => {
   const { name, occupation, catchPhrase } = req.body;
 
   Celebrity.create({ name, occupation, catchPhrase })
-    .then(() => {
+    .then((newCelebrity) => {
+      console.log("Successfully added new celebrity to the DB!");
       res.redirect("/celebrities");
     })
     .catch((error) => {
       console.log("Error while creating a new celebrity: ", error);
-      res.render("celebrities/new-celebrity", {
-        errorMessage: "Error creating celebrity",
-      });
+      res.render("celebrities/new-celebrity");
     });
 });
-
-// router.post("/celebrities/new-celebrity", (req, res, next) => {
-//   const { name, occupation, catchPhrase } = req.body;
-
-//   const newCelebrity = new Celebrity({
-//     name,
-//     occupation,
-//     catchPhrase,
-//   });
-
-//   newCelebrity
-//     .save()
-//     .then(() => {
-//       res.redirect("/celebrities");
-//     })
-//     .catch((err) => {
-//       res.render("celebrities/new-celebrity");
-//     });
-// });
-
-// // 1) doesn't work
-// router.get("/celebrities", async (req, res, next) => {
-//   try {
-//     let celebrities = await Celebrity.find();
-//     console.log(celebrities);
-//     res.render("celebrities/celebrities", { celebrities });
-//   } catch (error) {
-//     console.log(error);
-//     next(error);
-//   }
-// });
 
 // // 2) also doesn't work
-router.get("/celebrities", (req, res, next) => {
-  Celebrity.find()
-    .then((celebrities) => {
-      res.render("celebrities/celebrities", { celebrities });
-    })
-    .catch((err) => {
-      console.log("Error retrieving celebrities from database.", err);
-      res.render("error");
-    });
-});
+// router.get("/celebrities", (req, res, next) => {
+//   Celebrity.find()
+//     .then((celebrities) => {
+//       res.render("celebrities/celebrities", { celebrities });
+//     })
+//     .catch((err) => {
+//       console.log("Error retrieving celebrities from database.", err);
+//       res.render("error");
+//     });
+// });
 
 module.exports = router;
