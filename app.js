@@ -28,6 +28,18 @@ app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);
+
+const celebrities = require("./routes/index");
+app.use("/celebrities", celebrities);
+
+app.use("/create", (req, res, next) => {
+  res.render("celebrities/new-celebrity.hbs");
+});
+
+// app.post("/create", (req, res, next) => {
+//   const { name, occupation, catchPhrase } = req.body;
+// });
+
 // whatever
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
