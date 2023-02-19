@@ -5,27 +5,42 @@ const router = require("express").Router();
 
 // all your routes here
 router.get("/create", (req, res, next) => {
-  res.render("celebrities/new-celebrity.hbs");
+  res.render("celebrities/new-celebrity");
 });
 
-router.post("celebrities/create", (req, res, next) => {
+router.post("/create", (req, res, next) => {
   const { name, occupation, catchPhrase } = req.body;
 
-  const newCelebrity = new Celebrity({
-    name,
-    occupation,
-    catchPhrase,
-  });
-
-  newCelebrity
-    .save()
+  Celebrity.create({ name, occupation, catchPhrase })
     .then(() => {
       res.redirect("/celebrities");
     })
-    .catch((err) => {
-      res.render("celebrities/new-celebrity");
+    .catch((error) => {
+      console.log("Error while creating a new celebrity: ", error);
+      res.render("celebrities/new-celebrity", {
+        errorMessage: "Error creating celebrity",
+      });
     });
 });
+
+// router.post("/celebrities/new-celebrity", (req, res, next) => {
+//   const { name, occupation, catchPhrase } = req.body;
+
+//   const newCelebrity = new Celebrity({
+//     name,
+//     occupation,
+//     catchPhrase,
+//   });
+
+//   newCelebrity
+//     .save()
+//     .then(() => {
+//       res.redirect("/celebrities");
+//     })
+//     .catch((err) => {
+//       res.render("celebrities/new-celebrity");
+//     });
+// });
 
 // // 1) doesn't work
 // router.get("/celebrities", async (req, res, next) => {
