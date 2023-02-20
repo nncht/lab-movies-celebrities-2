@@ -81,4 +81,18 @@ router.get("/movies/:id/edit", (req, res, next) => {
     });
 });
 
+router.post("/movies/:id/", (req, res, next) => {
+  const { id } = req.params;
+  const { title, genre, plot, cast } = req.body;
+
+  Movie.findByIdAndUpdate(id, { title, genre, plot, cast }, { new: true })
+    .then((movieToUpdate) => {
+      console.log(movieToUpdate);
+      res.redirect(`/movies/${movieToUpdate.id}`);
+    })
+    .catch((error) => {
+      console.log("An error occured: ", error);
+    });
+});
+
 module.exports = router;
