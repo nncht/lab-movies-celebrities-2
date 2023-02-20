@@ -1,25 +1,26 @@
-<h2>Add a new movie</h2>
+<div class="content">
 
-<form action="/movies/create" method="POST">
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title" required />
+  <h2>Add a new movie</h2>
 
-  <label for="genre">Genre:</label>
-  <input type="text" id="genre" name="genre" />
+  <form action="/movies/create" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required />
 
-  <label for="plot">Plot:</label>
-  <input type="textarea" id="plot" name="plot" />
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" />
 
-  <label for="cast">Cast:</label>
+    <label for="plot">Plot:</label>
+    <input type="textarea" id="plot" name="plot" />
 
-  <select id="cast" name="cast" multiple>
-    {{#each celebrities}}
-      <option value="{{_id}}">{{this.name}}</option>
-    {{/each}}
-  </select>
+    <label for="cast">Cast:</label>
 
-  <button type="submit">Add Movie</button>
-</form>
+    <select id="cast" name="cast" multiple>
+      {{#each celebrities}}
+        <option value="{{_id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
 
-<a href="/movies">View all movies</a>
-<br />
+    <button type="submit">Add Movie</button>
+  </form>
+
+</div>

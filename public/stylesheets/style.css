@@ -1,10 +1,109 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(95, 100, 102);
-  color: white;
+html {
+  font-size: 10px;
+  font-family: "Courier New", Courier, monospace;
 }
 
-a {
-  color: #00b7ff;
+p,
+span,
+li {
+  font-size: 1.4rem;
+  color: white;
+  line-height: 150%;
+  list-style: none;
+}
+
+body {
+  background-color: rgb(95, 100, 102);
+  color: white;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  * {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.6rem;
+  }
+
+  nav {
+    width: 100vw;
+    background-color: rgb(42, 42, 42);
+    font-size: 2rem;
+    justify-content: center;
+    position: fixed;
+  }
+
+  h2 {
+    font-size: 3rem;
+    line-height: 160%;
+    font-weight: 800;
+    letter-spacing: 3px;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  a {
+    color: rgb(255, 255, 255);
+    font-size: 1.4rem;
+  }
+
+  a:hover {
+    color: rgb(110, 233, 255);
+    text-decoration: none;
+  }
+
+  a:active {
+    color: rgb(110, 233, 255);
+    text-decoration: none;
+  }
+
+  button {
+    padding: 5px 15px;
+    margin: 6px 0px;
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button a {
+    color: rgb(42, 42, 42);
+  }
+  .nav-bar a {
+    color: white;
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .nav-bar {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-evenly;
+    margin: 0;
+  }
+
+  .content-container {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/images/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .content {
+    padding: 100px 10vw 0px;
+  }
+}
+
+@media (min-width: 769px) {
 }

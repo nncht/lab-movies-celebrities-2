@@ -4,7 +4,9 @@ const router = require("express").Router();
 const Movie = require("../models/Movie.model");
 const Celebrity = require("../models/Celebrity.model");
 
-// all your routes here
+// All routes
+
+// Route 1: GET add movie page
 router.get("/movies/create", (req, res, next) => {
   Celebrity.find().then((celebritiesFromDB) => {
     res.render("movies/new-movie", { celebrities: celebritiesFromDB });
@@ -21,6 +23,7 @@ router.get("/movies", async (req, res, next) => {
   }
 });
 
+// Route 2: POST new movie
 router.post("/movies/create", (req, res, next) => {
   const { title, genre, plot, cast } = req.body;
 
@@ -35,6 +38,7 @@ router.post("/movies/create", (req, res, next) => {
     });
 });
 
+// Route 3: GET movie by ID
 router.get("/movies/:id", (req, res, next) => {
   const { id } = req.params;
 
@@ -49,6 +53,7 @@ router.get("/movies/:id", (req, res, next) => {
     });
 });
 
+// Route 4: Delete movie by ID
 router.post("/movies/:id/delete", (req, res, next) => {
   const { id } = req.params;
 
@@ -62,6 +67,7 @@ router.post("/movies/:id/delete", (req, res, next) => {
     });
 });
 
+// Route 5: GET edit movie page
 router.get("/movies/:id/edit", (req, res, next) => {
   const { id } = req.params;
 
@@ -81,6 +87,7 @@ router.get("/movies/:id/edit", (req, res, next) => {
     });
 });
 
+// Route 6: Update movie
 router.post("/movies/:id/", (req, res, next) => {
   const { id } = req.params;
   const { title, genre, plot, cast } = req.body;

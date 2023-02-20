@@ -1,7 +1,9 @@
-<h2>Movies</h2>
+<div class="content">
+  <h2>Movies</h2>
 
-{{#each movies}}
-  <a href="/movies/{{this._id}}"><h3>{{this.title}}</h3></a>
-{{/each}}
+  {{#each movies}}
+    <a href="/movies/{{this._id}}"><h3>{{this.title}}</h3></a>
+  {{/each}}
 
-<a href="movies/create">Add a new movie</a>
+  <button class="button"><a href="movies/create">Add Movie</a></button>
+</div>
