@@ -18,4 +18,18 @@ router.get("/movies", async (req, res, next) => {
   }
 });
 
+router.post("/movies/create", (req, res, next) => {
+  const { title, genre, plot, cast } = req.body;
+
+  Movie.create({ title, genre, plot, cast })
+    .then((newCelebrity) => {
+      console.log("Successfully added new movie to the DB!");
+      res.redirect("/movies");
+    })
+    .catch((error) => {
+      console.log("Error while creating a new movie: ", error);
+      res.render("celebrities/new-movie");
+    });
+});
+
 module.exports = router;
