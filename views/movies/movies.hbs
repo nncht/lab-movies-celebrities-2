@@ -1,7 +1,7 @@
-<h2>Celebrities</h2>
+<h2>Movies</h2>
 
 {{#each movies}}
-  <h3>{{this.title}}</h3>
+  <a href="/movies/:id"><h3>{{this.title}}</h3></a>
 {{/each}}
 
 <a href="movies/create">Add a new movie</a>
