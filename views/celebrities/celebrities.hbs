@@ -1,15 +1,16 @@
 <div class="content">
-  <h2>Celebrities</h2>
+  <section>
+    <h2>Celebrities</h2>
 
-  {{#each celebrities}}
-    <h3>{{this.name}}</h3>
-    <ul>
-      <li>Occupation: {{this.occupation}}</li>
-      <li>Catchphrase: "{{this.catchPhrase}}"</li>
-    </ul>
+    {{#each celebrities}}
+      <h3>{{this.name}}</h3>
+      <ul>
+        <li>Occupation: {{this.occupation}}</li>
+        <li>Catchphrase: "{{this.catchPhrase}}"</li>
+      </ul>
 
-  {{/each}}
+    {{/each}}
 
-  <button class="button"><a href="/create">Add Celebrity</a></button>
-
+    <button class="button"><a href="/create">Add Celebrity</a></button>
+  </section>
 </div>

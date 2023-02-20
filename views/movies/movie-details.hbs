@@ -1,22 +1,24 @@
 <div class="content">
-  <h2>{{details.title}}</h2>
-  <ul>
-    <li>Genre: {{details.genre}}</li>
-    <li>Plot: {{details.plot}}</li>
-  </ul>
-
-  <h3>Cast:</h3>
-  {{#each details.cast}}
-    <h4>{{this.name}}</h4>
+  <section>
+    <h2>{{details.title}}</h2>
     <ul>
-      <li>Occupation: {{this.occupation}}</li>
-      <li>Catchphrase: "{{this.catchPhrase}}"</li>
+      <li>Genre: {{details.genre}}</li>
+      <li>Plot: {{details.plot}}</li>
     </ul>
-  {{/each}}
 
-  <form action="/movies/{{details._id}}/delete" method="POST">
-    <button class="button"><a href="/movies/{{details._id}}/edit">Edit Movie</a></button>
-    <button class="button" type="submit">Delete</button>
-  </form>
+    <h3><b>Cast:</b></h3>
+    {{#each details.cast}}
+      <h4>{{this.name}}</h4>
+      <ul>
+        <li>Occupation: {{this.occupation}}</li>
+        <li>Catchphrase: "{{this.catchPhrase}}"</li>
+      </ul>
+    {{/each}}
 
+    <form action="/movies/{{details._id}}/delete" method="POST">
+      <button class="button"><a href="/movies/{{details._id}}/edit">Edit Movie</a></button>
+      <button class="button" type="submit">Delete</button>
+    </form>
+
+  </section>
 </div>
