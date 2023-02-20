@@ -49,4 +49,17 @@ router.get("/movies/:id", (req, res, next) => {
     });
 });
 
+router.post("/movies/:id/delete", (req, res, next) => {
+  const { id } = req.params;
+
+  Movie.findByIdAndRemove(id)
+    .then((movieToDelete) => {
+      console.log(movieToDelete);
+      res.redirect("/movies");
+    })
+    .catch((error) => {
+      console.log("Movie couldn't be deleted.");
+    });
+});
+
 module.exports = router;
