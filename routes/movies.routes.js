@@ -35,4 +35,27 @@ router.post("/movies/create", (req, res, next) => {
     });
 });
 
+// router.get("/movies/:id", (req, res, next) => {
+//   const { id } = req.params;
+
+//   Movie.findById(id)
+//     .populate("cast")
+//     .then((moviefromDB) => {
+//       res.render("movies/movie-details", { details: moviefromDB });
+//     });
+// });
+
+router.get("/movies/:id", (req, res, next) => {
+  const { id } = req.params;
+
+  Movie.findOne({ id })
+    .populate("cast")
+    .then((moviefromDB) => {
+      res.render("movies/movie-details", { details: moviefromDB });
+    })
+    .catch((error) => {
+      console.log("An error occured: ", error);
+    });
+});
+
 module.exports = router;

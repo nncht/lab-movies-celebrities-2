@@ -1,7 +1,7 @@
 <h2>Movies</h2>
 
 {{#each movies}}
-  <a href="/movies/:id"><h3>{{this.title}}</h3></a>
+  <a href="/movies/{{_id}}"><h3>{{this.title}}</h3></a>
 {{/each}}
 
 <a href="movies/create">Add a new movie</a>
