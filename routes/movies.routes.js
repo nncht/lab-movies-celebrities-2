@@ -2,9 +2,11 @@
 const router = require("express").Router();
 
 const Movie = require("../models/Movie.model");
+const Celebrity = require("../models/Celebrity.model");
 
 // all your routes here
-router.get("/create", (req, res, next) => {
+router.get("/movies/create", (req, res, next) => {
+  let celebrities = Celebrity.find();
   res.render("movies/new-movie", { celebrities });
 });
 
