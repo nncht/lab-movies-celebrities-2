@@ -62,4 +62,23 @@ router.post("/movies/:id/delete", (req, res, next) => {
     });
 });
 
+router.get("/movies/:id/edit", (req, res, next) => {
+  const { id } = req.params;
+
+  Movie.findById(id)
+    .then((calledMovie) => {
+      Celebrity.find().then((calledCast) => {
+        console.log(calledMovie);
+        console.log(calledCast);
+        res.render("movies/edit-movie", {
+          movieToEdit: calledMovie,
+          castToEdit: calledCast,
+        });
+      });
+    })
+    .catch((error) => {
+      console.log("An error occured: ", error);
+    });
+});
+
 module.exports = router;
