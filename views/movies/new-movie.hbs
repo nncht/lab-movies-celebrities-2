@@ -11,10 +11,15 @@
   <input type="textarea" id="plot" name="plot" />
 
   <label for="cast">Cast:</label>
-  <input type="textarea" id="cast" name="cast" />
+
+  <select id="cast" name="cast" multiple>
+    {{#each celebrities}}
+      <option value="{{_id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
 
   <button type="submit">Add Movie</button>
 </form>
 
-<a href="/celebrities">View all movies</a>
+<a href="/movies">View all movies</a>
 <br />
